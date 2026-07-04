@@ -16,7 +16,7 @@ export async function setupEnvironment(renderer, scene) {
 
         console.log("✅ HDRI cargado con éxito:", texture.name);
     } catch (err) {
-        console.error("❌ Error al cargar el HDRI:", err);
+        console.warn("⚠️ HDRI no disponible, usando entorno por defecto:", err.message);
         scene.environmentIntensity = 1.0;
     }
 }

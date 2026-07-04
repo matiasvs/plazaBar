@@ -7,7 +7,7 @@ export async function setupEnvironment(renderer, scene) {
     const basePath = import.meta.env.BASE_URL;
 
     try {
-        const texture = await exrLoader.loadAsync(`${basePath}models/EveningSkyHDRI022B_4K_HDR.exr`);
+        const texture = await exrLoader.loadAsync(`${basePath}textures/EveningSkyHDRI022B_4K_HDR.exr`);
         texture.mapping = THREE.EquirectangularReflectionMapping;
 
         scene.background = texture;

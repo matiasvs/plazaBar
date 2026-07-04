@@ -335,13 +335,6 @@ const basePath = import.meta.env.BASE_URL;
         requestAnimationFrame(animate);
     }
 
-    // Interaction Callbacks
-    setupInteraction(camera, scene, {
-        onClick: (obj) => {
-            console.log("Interactuado con:", obj.name || "Sin nombre");
-        }
-    });
-
     // Resize handler
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;

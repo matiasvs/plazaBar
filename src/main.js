@@ -83,27 +83,30 @@ const basePath = import.meta.env.BASE_URL;
         console.warn("El jugador no tendrá superficie para caminar sin pisoBase.");
     }
 
-    // Cargar hall12.glb (modelo principal del hall)
+    // Cargar los fragmentos del hall desde public/models
+    const meshParts = ['mesh1.glb', 'mesh2.glb', 'mesh3.glb', 'mesh4.glb', 'mesh5.glb'];
+
     try {
-        const hall12Gltf = await loader.loadAsync(`${basePath}models/hall14.glb`);
-        const modelHall = hall12Gltf.scene;
+        for (const fileName of meshParts) {
+            const gltf = await loader.loadAsync(`${basePath}models/${fileName}`);
+            const modelPart = gltf.scene;
 
-        modelHall.traverse((child) => {
-            if (child.isLight) {
-                child.visible = false;
-                child.intensity = 0;
-            }
-            if (child.isMesh) {
-                child.receiveShadow = true;
-                child.castShadow = true;
-            }
-        });
+            modelPart.traverse((child) => {
+                if (child.isLight) {
+                    child.visible = false;
+                    child.intensity = 0;
+                }
+                if (child.isMesh) {
+                    child.receiveShadow = true;
+                    child.castShadow = true;
+                }
+            });
 
-        scene.add(modelHall);
-        colliders.push(modelHall);
-        console.log("hall14.glb cargado correctamente.");
+            scene.add(modelPart);
+            console.log(`${fileName} cargado correctamente.`);
+        }
     } catch (err) {
-        console.error("Error cargando hall14.glb:", err);
+        console.error("Error cargando los fragmentos del hall:", err);
     }
 
     // Controles de Jugador

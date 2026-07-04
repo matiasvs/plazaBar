@@ -9,7 +9,6 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import Stats from 'stats.js';
 import GUI from 'lil-gui';
 import { setupEnvironment, setupSun, setupFog } from './scene.js';
-import { setupInteraction } from './interaction.js';
 
 const basePath = import.meta.env.BASE_URL;
 
